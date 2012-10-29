@@ -47,12 +47,38 @@ void GenerarMapa()
 {
 	int j=0;
 	int x,y;
-	ofstream FileWorld("PorFin.txt", ios::out);
+	ofstream FileWorld("Mundo1.txt", ios::out);
+	string TipoObjeto;
 	for(; j< (int) Coords.size() ; j++)
 	{
 		x=dbSpriteX(Coords.at(j).getID())-dbSpriteWidth(Coords.at(j).getID())/2;
 		y=dbSpriteY(Coords.at(j).getID())-dbSpriteHeight(Coords.at(j).getID())/2;
-		FileWorld << Coords.at(j).getID() << " " << Coords.at(j).getIm() << " " << x <<  " " << y ;
+		if (Coords.at(j).getIm()==2)
+		{
+			TipoObjeto="Pollo";
+		}
+		if (Coords.at(j).getIm()==3)
+		{
+			TipoObjeto="Alcon";
+		}
+		if (Coords.at(j).getIm()==4)
+		{
+
+			TipoObjeto="Ornitorrinco";
+		}
+		if (Coords.at(j).getIm()==5 || Coords.at(j).getIm()==6)
+		{
+			
+			TipoObjeto="Obstaculo";
+		}
+		if (Coords.at(j).getIm()==7)
+		{
+			
+			TipoObjeto="Huevo";
+		}
+
+		
+		FileWorld << Coords.at(j).getID() << " " << Coords.at(j).getIm() << " " << x <<  " " << y << " " << TipoObjeto;
 		FileWorld << endl;
 	}  	  
 	 
